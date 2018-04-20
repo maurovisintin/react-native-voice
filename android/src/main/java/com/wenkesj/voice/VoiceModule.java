@@ -244,6 +244,12 @@ public class VoiceModule extends ReactContextBaseJavaModule implements Recogniti
     event.putBoolean("error", false);
     sendEvent("onSpeechStart", event);
     Log.d("ASR", "onBeginningOfSpeech()");
+
+    WritableArray arr = Arguments.createArray();
+    arr.pushString("");
+    WritableMap event2 = Arguments.createMap();
+    event2.putArray("value", arr);
+    sendEvent("onSpeechPartialResults", event2);
   }
 
   @Override
